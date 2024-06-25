@@ -1,7 +1,6 @@
 #include <gtest/gtest.h>
 #include "tictactoe.h"
 #include <sstream>
-#include <sqlite3.h>
 // Helper function to capture the output of print_board
 
 std::string capturePrintBoardOutput(std::vector<std::vector<char>>& board) {
