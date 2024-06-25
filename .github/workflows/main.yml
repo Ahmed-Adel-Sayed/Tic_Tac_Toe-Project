@@ -11,20 +11,6 @@ on:
 jobs:
   build-test-and-deploy:
     runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-      - uses: actions/checkout@v2
-
-       name: Set up Google Test
-      run: |
-        git clone https://github.com/google/googletest.git
-        cd googletest
-        cmake .
-        make
-        sudo make install
-
-
       - name: Build Tic_Tac_Toe
         run: |
           g++ -o Tic_Tac_Toe Tic_Tac_Toe.cpp
