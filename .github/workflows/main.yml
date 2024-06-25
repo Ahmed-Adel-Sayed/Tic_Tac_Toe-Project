@@ -1,4 +1,4 @@
-name: Build, Test, and Deploy
+name: Build Tic_Tac_Toe.cpp
 
 on:
   push:
@@ -9,27 +9,23 @@ on:
       - main
 
 jobs:
-  build-test-and-deploy:
+  build-TIC:
     runs-on: ubuntu-latest
-      - name: Build Tic_Tac_Toe
-        run: |
-          g++ -o Tic_Tac_Toe Tic_Tac_Toe.cpp
 
-      - name: Build and Run Test code with Google Test
-        run: |
-          g++ -o Tic_Tac_Toe(Testing) Tic_Tac_Toe(Testing).cpp Tic_Tac_Toe(code without main).cpp Tic_Tac_Toe.h -I. -lgtest -lgtest_main -pthread
-          ./Tic_Tac_Toe(Testing)
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Deploy TIC
-        if: success()
-        run: |
-          mkdir deploy
-          cp Tic_Tac_Toe deploy/Tic_Tac_Toe
+      - name: Install g++
+        run: sudo apt-get install -y g++
 
-      - name: Upload TIC Artifact
-        if: success()
+      - name: Build Tic_Tac_Toe.cpp
+        run: |
+          chmod +x build_TIC.sh
+          ./build_TIC.sh
+
+      - name: Upload Tic_Tac_Toe Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: TIC-artifact
-          path: deploy/Tic_Tac_Toe 
-
+          name: Tic_Tac_Toe-artifact
+          path: Tic_Tac_Toe   
