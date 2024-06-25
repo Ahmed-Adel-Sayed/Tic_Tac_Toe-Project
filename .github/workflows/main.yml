@@ -16,10 +16,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get install g++ make
-        sudo apt-get install libgtest-dev
+       name: Set up Google Test
+      run: |
+        git clone https://github.com/google/googletest.git
+        cd googletest
+        cmake .
+        make
+        sudo make install
+
 
       - name: Build Tic_Tac_Toe
         run: |
