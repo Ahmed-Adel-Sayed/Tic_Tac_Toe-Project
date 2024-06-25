@@ -1,1 +1,47 @@
+name: Build, Test, and Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-test-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++ make cmake libgtest-dev
+          sudo cp -r /usr/src/gtest /usr/local/include/gtest
+          sudo chmod +x /usr/local/include/gtest/gtest.h
+
+      - name: Build Tic_Tac_Toe
+        run: |
+          g++ -o Tic_Tac_Toe Tic_Tac_Toe.cpp
+
+      - name: Build and Run Test code with Google Test
+        run: |
+          g++ -o Tic_Tac_Toe(Testing) Tic_Tac_Toe(Testing).cpp Tic_Tac_Toe(code without main).cpp Tic_Tac_Toe.h -I. -lgtest -lgtest_main -pthread
+          ./Tic_Tac_Toe(Testing)
+
+      - name: Deploy TIC
+        if: success()
+        run: |
+          mkdir deploy
+          cp Tic_Tac_Toe deploy/Tic_Tac_Toe
+
+      - name: Upload TIC Artifact
+        if: success()
+        uses: actions/upload-artifact@v2
+        with:
+          name: TIC-artifact
+          path: deploy/Tic_Tac_Toe 
 
