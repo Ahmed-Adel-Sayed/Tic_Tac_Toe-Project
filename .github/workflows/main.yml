@@ -18,10 +18,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y g++ make cmake libgtest-dev
-          sudo cp -r /usr/src/gtest /usr/local/include/gtest
-          sudo chmod +x /usr/local/include/gtest/gtest.h
+          sudo apt-get install g++ make
+        sudo apt-get install libgtest-dev
 
       - name: Build Tic_Tac_Toe
         run: |
