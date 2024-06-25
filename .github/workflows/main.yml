@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build-TIC:
+  build-Tic_Tac_Toe:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,8 +21,8 @@ jobs:
 
       - name: Build Tic_Tac_Toe.cpp
         run: |
-          chmod +x build_TIC.sh
-          ./build_TIC.sh
+          chmod +x build_Tic_Tac_Toe.sh
+          ./build_Tic_Tac_Toe.sh
 
       - name: Upload Tic_Tac_Toe Artifact
         uses: actions/upload-artifact@v2
