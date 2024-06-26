@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+chmod +x ./build_Tic_Tac_Toe.sh
+chmod +x scripts/build_Tic_Tac_Toe.sh
 
       - name: Install g++
         run: sudo apt-get install g++
