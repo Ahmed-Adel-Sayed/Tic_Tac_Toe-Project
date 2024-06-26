@@ -7,6 +7,7 @@
 #include <sstream> // for stringstream
 #include <functional> // for hash
 #include <regex> // for regular expressions
+#include <ctime>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
