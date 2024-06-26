@@ -18,7 +18,8 @@ jobs:
 
     - name: Run C++ code
       run: ./Tic_Tac_Toe 
-    - name: Build and Run ForgetPass
-      run: |
-        g++ -o ForgetPass ForgetPass.cpp
-        ./ForgetPass
+    - name: Build ForgetPass
+      run: g++ -o ForgetPass ForgetPass.cpp
+
+    - name: Run ForgetPass
+      run: ./ForgetPass
