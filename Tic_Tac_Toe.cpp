@@ -423,7 +423,7 @@ void PlayerVsAI() {
 
 int main()
 {
-    srand(time);
+    srand(time(0));
     cout << "-------Welcome To Tic Tac Toe Game-------" << endl;
     int choice;
     cout << "1.PlayerVsPlayer" << endl;
