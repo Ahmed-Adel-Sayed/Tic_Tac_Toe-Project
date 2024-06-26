@@ -6,7 +6,7 @@
 #include <vector>
 #include <limits>
 #include <climits>
-
+#include <ctime>
 using namespace std;
 
 // Function to print the Tic-Tac-Toe board
@@ -35,7 +35,8 @@ void addchar(vector<vector<char>>& board, int spot, char playerSymbol) {
     else
     {
         cout << "Invalid spot, Try another one :";
-        cin >> spot;
+        //cin >> spot;
+        spot = 1 + rand() % 9;  // Choose another spot if already taken
         addchar(board, spot, playerSymbol);
     }
 
@@ -368,11 +369,12 @@ void PlayerVsAI() {
         for (int round = 1; round <= 9; ++round) {
             if (currentPlayerSymbol == playerSymbol) {
                 cout << "Enter the spot you would like to add your character in: ";
-                cin >> spot;
-
+                //cin >> spot;
+                spot= 1+ rand()%9;
                 while (spot > 9 || spot <= 0) {
                     cout << "Invalid move. Try again: ";
-                    cin >> spot;
+                    //cin >> spot;
+                    spot = 1 + rand() % 9;  // Choose another spot if already taken
                 }
 
                 addchar(board, spot, currentPlayerSymbol);
@@ -413,20 +415,22 @@ void PlayerVsAI() {
         startingPlayer = (startingPlayer == 'P') ? 'A' : 'P';
 
         cout << "Do you want to play again (Y/N): ";
-        cin >> playAgain;
-
+        //cin >> playAgain;
+        playAgain='N';
     } while (playAgain == 'y' || playAgain == 'Y');
 }
 
 
 int main()
 {
+    srand(time);
     cout << "-------Welcome To Tic Tac Toe Game-------" << endl;
     int choice;
     cout << "1.PlayerVsPlayer" << endl;
     cout << "2.PlayerVsAI" << endl;
     cout << "Choose a mode to play with:" << endl;
-    cin >> choice;
+    //cin >> choice;
+    choice =2;
     if (choice == 1)
     {
         PlayerVsPlayer();
